@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-gh-pages/gh-pages/lib/util.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-gh-pages">npmtest-gh-pages (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-gh-pages/gh-pages/lib/util.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">14.1% <small>(11 / 78)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">14.1% <small>(11 / 78)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-gh-pages/gh-pages/lib/</a> &#187; util.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var path = require('path');
+&nbsp;
+var async = require('async');
+var fs = require('graceful-fs');
+var Q = require('q');
+&nbsp;
+&nbsp;
+/**
+ * Generate a list of unique directory paths given a list of file paths.
+ * @param {Array.&lt;string&gt;} files List of file paths.
+ * @return {Array.&lt;string&gt;} List of directory paths.
+ */
+var uniqueDirs = exports.uniqueDirs = <span class="fstat-no" title="function not covered" >function(files) {</span>
+<span class="cstat-no" title="statement not covered" >  var dirs = {};</span>
+<span class="cstat-no" title="statement not covered" >  files.forEach(<span class="fstat-no" title="function not covered" >function(filepath) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var parts = path.dirname(filepath).split(path.sep);</span>
+<span class="cstat-no" title="statement not covered" >    var partial = parts[0];</span>
+<span class="cstat-no" title="statement not covered" >    dirs[partial] = true;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 1, ii = parts.length; i &lt; ii; ++i) {</span>
+<span class="cstat-no" title="statement not covered" >      partial = path.join(partial, parts[i]);</span>
+<span class="cstat-no" title="statement not covered" >      dirs[partial] = true;</span>
+    }
+  });
+<span class="cstat-no" title="statement not covered" >  return Object.keys(dirs);</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Sort function for paths.  Sorter paths come first.  Paths of equal length are
+ * sorted alphanumerically in path segment order.
+ * @param {string} a First path.
+ * @param {string} b Second path.
+ * @return {number} Comparison.
+ */
+var byShortPath = exports.byShortPath = <span class="fstat-no" title="function not covered" >function(a, b) {</span>
+<span class="cstat-no" title="statement not covered" >  var aParts = a.split(path.sep);</span>
+<span class="cstat-no" title="statement not covered" >  var bParts = b.split(path.sep);</span>
+<span class="cstat-no" title="statement not covered" >  var aLength = aParts.length;</span>
+<span class="cstat-no" title="statement not covered" >  var bLength = bParts.length;</span>
+<span class="cstat-no" title="statement not covered" >  var cmp = 0;</span>
+<span class="cstat-no" title="statement not covered" >  if (aLength &lt; bLength) {</span>
+<span class="cstat-no" title="statement not covered" >    cmp = -1;</span>
+  } else <span class="cstat-no" title="statement not covered" >if (aLength &gt; bLength) {</span>
+<span class="cstat-no" title="statement not covered" >    cmp = 1;</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    var aPart, bPart;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 0; i &lt; aLength; ++i) {</span>
+<span class="cstat-no" title="statement not covered" >      aPart = aParts[i];</span>
+<span class="cstat-no" title="statement not covered" >      bPart = bParts[i];</span>
+<span class="cstat-no" title="statement not covered" >      if (aPart &lt; bPart) {</span>
+<span class="cstat-no" title="statement not covered" >        cmp = -1;</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+      } else <span class="cstat-no" title="statement not covered" >if (aPart &gt; bPart) {</span>
+<span class="cstat-no" title="statement not covered" >        cmp = 1;</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+      }
+    }
+  }
+<span class="cstat-no" title="statement not covered" >  return cmp;</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Generate a list of directories to create given a list of file paths.
+ * @param {Array.&lt;string&gt;} files List of file paths.
+ * @return {Array.&lt;string&gt;} List of directory paths ordered by path length.
+ */
+var dirsToCreate = exports.dirsToCreate = <span class="fstat-no" title="function not covered" >function(files) {</span>
+<span class="cstat-no" title="statement not covered" >  return uniqueDirs(files).sort(byShortPath);</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Copy a file.
+ * @param {Object} obj Object with src and dest properties.
+ * @param {function(Error)} callback Callback
+ */
+var copyFile = exports.copyFile = <span class="fstat-no" title="function not covered" >function(obj, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  var called = false;</span>
+<span class="fstat-no" title="function not covered" >  function done(err) {</span>
+<span class="cstat-no" title="statement not covered" >    if (!called) {</span>
+<span class="cstat-no" title="statement not covered" >      called = true;</span>
+<span class="cstat-no" title="statement not covered" >      callback(err);</span>
+    }
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var read = fs.createReadStream(obj.src);</span>
+<span class="cstat-no" title="statement not covered" >  read.on('error', <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >    done(err);</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var write = fs.createWriteStream(obj.dest);</span>
+<span class="cstat-no" title="statement not covered" >  write.on('error', <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >    done(err);</span>
+  });
+<span class="cstat-no" title="statement not covered" >  write.on('close', <span class="fstat-no" title="function not covered" >function(ex) {</span></span>
+<span class="cstat-no" title="statement not covered" >    done();</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  read.pipe(write);</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Make directory, ignoring errors if directory already exists.
+ * @param {string} path Directory path.
+ * @param {function(Error)} callback Callback.
+ */
+<span class="fstat-no" title="function not covered" >function makeDir(path, callback) {</span>
+<span class="cstat-no" title="statement not covered" >  fs.mkdir(path, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (err) {</span>
+      // check if directory exists
+<span class="cstat-no" title="statement not covered" >      fs.stat(path, <span class="fstat-no" title="function not covered" >function(err2, stat) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (err2 || !stat.isDirectory()) {</span>
+<span class="cstat-no" title="statement not covered" >          callback(err);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          callback();</span>
+        }
+      });
+    } else {
+<span class="cstat-no" title="statement not covered" >      callback();</span>
+    }
+  });
+}
+&nbsp;
+&nbsp;
+/**
+ * Copy a list of files.
+ * @param {Array.&lt;string&gt;} files Files to copy.
+ * @param {string} base Base directory.
+ * @param {string} dest Destination directory.
+ * @return {Promise} A promise.
+ */
+exports.copy = <span class="fstat-no" title="function not covered" >function(files, base, dest) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = Q.defer();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var pairs = [];</span>
+<span class="cstat-no" title="statement not covered" >  var destFiles = [];</span>
+<span class="cstat-no" title="statement not covered" >  files.forEach(<span class="fstat-no" title="function not covered" >function(file) {</span></span>
+<span class="cstat-no" title="statement not covered" >    var src = path.resolve(base, file);</span>
+<span class="cstat-no" title="statement not covered" >    var relative = path.relative(base, src);</span>
+<span class="cstat-no" title="statement not covered" >    var target = path.join(dest, relative);</span>
+<span class="cstat-no" title="statement not covered" >    pairs.push({</span>
+      src: src,
+      dest: target
+    });
+<span class="cstat-no" title="statement not covered" >    destFiles.push(target);</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  async.eachSeries(dirsToCreate(destFiles), makeDir, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (err) {</span>
+<span class="cstat-no" title="statement not covered" >      return deferred.reject(err);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    async.each(pairs, copyFile, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (err) {</span>
+<span class="cstat-no" title="statement not covered" >        return deferred.reject(err);</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        return deferred.resolve();</span>
+      }
+    });
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
+};
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 12:04:17 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
