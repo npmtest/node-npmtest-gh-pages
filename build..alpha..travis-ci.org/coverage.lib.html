@@ -1,5 +1,7 @@
-<html lang="en"><head>
-    <title>Code coverage report for node-npmtest-gh-pages/gh-pages/lib/git.js</title>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-gh-pages/node_modules/gh-pages/lib/git.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -192,7 +194,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-gh-pages">npmtest-gh-pages (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-gh-pages/gh-pages/lib/git.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-gh-pages/node_modules/gh-pages/lib/git.js</span></h1>
     <h2>
         
         Statements: <span class="metric">30.99% <small>(22 / 71)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -208,11 +210,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-gh-pages/gh-pages/lib/</a> » git.js</div>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-gh-pages/node_modules/gh-pages/lib/</a> &#187; git.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tbody><tr><td class="line-count">1
+<tr><td class="line-count">1
 2
 3
 4
@@ -709,13 +711,13 @@ var git = 'git';
  * @param {number} code Error code.
  * @param {string} message Error message.
  */
-<span class="fstat-no" title="function not covered">function ProcessError(code, message) {</span>
-<span class="cstat-no" title="statement not covered">  var callee = arguments.callee;</span>
-<span class="cstat-no" title="statement not covered">  Error.apply(this, [message]);</span>
-<span class="cstat-no" title="statement not covered">  Error.captureStackTrace(this, callee);</span>
-<span class="cstat-no" title="statement not covered">  this.code = code;</span>
-<span class="cstat-no" title="statement not covered">  this.message = message;</span>
-<span class="cstat-no" title="statement not covered">  this.name = callee.name;</span>
+<span class="fstat-no" title="function not covered" >function ProcessError(code, message) {</span>
+<span class="cstat-no" title="statement not covered" >  var callee = arguments.callee;</span>
+<span class="cstat-no" title="statement not covered" >  Error.apply(this, [message]);</span>
+<span class="cstat-no" title="statement not covered" >  Error.captureStackTrace(this, callee);</span>
+<span class="cstat-no" title="statement not covered" >  this.code = code;</span>
+<span class="cstat-no" title="statement not covered" >  this.message = message;</span>
+<span class="cstat-no" title="statement not covered" >  this.name = callee.name;</span>
 }
 util.inherits(ProcessError, Error);
 &nbsp;
@@ -727,25 +729,25 @@ util.inherits(ProcessError, Error);
  * @param {string} cwd Working directory.
  * @return {Promise} A promise.
  */
-<span class="fstat-no" title="function not covered">function spawn(exe, args, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  var deferred = Q.defer();</span>
-<span class="cstat-no" title="statement not covered">  var child = cp.spawn(exe, args, {cwd: cwd || process.cwd()});</span>
-<span class="cstat-no" title="statement not covered">  var buffer = [];</span>
-<span class="cstat-no" title="statement not covered">  child.stderr.on('data', <span class="fstat-no" title="function not covered">function(chunk) {</span></span>
-<span class="cstat-no" title="statement not covered">    buffer.push(chunk.toString());</span>
+<span class="fstat-no" title="function not covered" >function spawn(exe, args, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  var deferred = Q.defer();</span>
+<span class="cstat-no" title="statement not covered" >  var child = cp.spawn(exe, args, {cwd: cwd || process.cwd()});</span>
+<span class="cstat-no" title="statement not covered" >  var buffer = [];</span>
+<span class="cstat-no" title="statement not covered" >  child.stderr.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+<span class="cstat-no" title="statement not covered" >    buffer.push(chunk.toString());</span>
   });
-<span class="cstat-no" title="statement not covered">  child.stdout.on('data', <span class="fstat-no" title="function not covered">function(chunk) {</span></span>
-<span class="cstat-no" title="statement not covered">    deferred.notify(chunk);</span>
+<span class="cstat-no" title="statement not covered" >  child.stdout.on('data', <span class="fstat-no" title="function not covered" >function(chunk) {</span></span>
+<span class="cstat-no" title="statement not covered" >    deferred.notify(chunk);</span>
   });
-<span class="cstat-no" title="statement not covered">  child.on('close', <span class="fstat-no" title="function not covered">function(code) {</span></span>
-<span class="cstat-no" title="statement not covered">    if (code) {</span>
-<span class="cstat-no" title="statement not covered">      var msg = buffer.join('') || 'Process failed: ' + code;</span>
-<span class="cstat-no" title="statement not covered">      deferred.reject(new ProcessError(code, msg));</span>
+<span class="cstat-no" title="statement not covered" >  child.on('close', <span class="fstat-no" title="function not covered" >function(code) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (code) {</span>
+<span class="cstat-no" title="statement not covered" >      var msg = buffer.join('') || 'Process failed: ' + code;</span>
+<span class="cstat-no" title="statement not covered" >      deferred.reject(new ProcessError(code, msg));</span>
     } else {
-<span class="cstat-no" title="statement not covered">      deferred.resolve(code);</span>
+<span class="cstat-no" title="statement not covered" >      deferred.resolve(code);</span>
     }
   });
-<span class="cstat-no" title="statement not covered">  return deferred.promise;</span>
+<span class="cstat-no" title="statement not covered" >  return deferred.promise;</span>
 }
 &nbsp;
 &nbsp;
@@ -757,8 +759,8 @@ util.inherits(ProcessError, Error);
  *     or rejected with an error.  To get stdout, use a progress listener (e.g.
  *     `promise.progress(function(chunk) {console.log(String(chunk);}))`).
  */
-exports = module.exports = <span class="fstat-no" title="function not covered">function(args, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, args, cwd);</span>
+exports = module.exports = <span class="fstat-no" title="function not covered" >function(args, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, args, cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -766,8 +768,8 @@ exports = module.exports = <span class="fstat-no" title="function not covered">f
  * Set the Git executable to be used by exported methods (defaults to 'git').
  * @param {string} exe Git executable (full path if not already on path).
  */
-exports.exe = <span class="fstat-no" title="function not covered">function(exe) {</span>
-<span class="cstat-no" title="statement not covered">  git = exe;</span>
+exports.exe = <span class="fstat-no" title="function not covered" >function(exe) {</span>
+<span class="cstat-no" title="statement not covered" >  git = exe;</span>
 };
 &nbsp;
 &nbsp;
@@ -776,8 +778,8 @@ exports.exe = <span class="fstat-no" title="function not covered">function(exe) 
  * @param {string} cwd Repository directory.
  * @return {ChildProcess} Child process.
  */
-exports.init = <span class="fstat-no" title="function not covered">function init(cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['init'], cwd);</span>
+exports.init = <span class="fstat-no" title="function not covered" >function init(cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['init'], cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -789,19 +791,19 @@ exports.init = <span class="fstat-no" title="function not covered">function init
  * @param {options} options All options.
  * @return {Promise} A promise.
  */
-exports.clone = <span class="fstat-no" title="function not covered">function clone(repo, dir, branch, options) {</span>
-<span class="cstat-no" title="statement not covered">  return fs.exists(dir).then(<span class="fstat-no" title="function not covered">function(exists) {</span></span>
-<span class="cstat-no" title="statement not covered">    if (exists) {</span>
-<span class="cstat-no" title="statement not covered">      return Q.resolve();</span>
+exports.clone = <span class="fstat-no" title="function not covered" >function clone(repo, dir, branch, options) {</span>
+<span class="cstat-no" title="statement not covered" >  return fs.exists(dir).then(<span class="fstat-no" title="function not covered" >function(exists) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (exists) {</span>
+<span class="cstat-no" title="statement not covered" >      return Q.resolve();</span>
     } else {
-<span class="cstat-no" title="statement not covered">      return fs.makeTree(path.dirname(path.resolve(dir))).then(<span class="fstat-no" title="function not covered">function() {</span></span>
-<span class="cstat-no" title="statement not covered">        var args = ['clone', repo, dir, '--branch', branch, '--single-branch', '--origin', options.remote];</span>
-<span class="cstat-no" title="statement not covered">        if (options.depth) {</span>
-<span class="cstat-no" title="statement not covered">          args.push('--depth', options.depth);</span>
+<span class="cstat-no" title="statement not covered" >      return fs.makeTree(path.dirname(path.resolve(dir))).then(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        var args = ['clone', repo, dir, '--branch', branch, '--single-branch', '--origin', options.remote];</span>
+<span class="cstat-no" title="statement not covered" >        if (options.depth) {</span>
+<span class="cstat-no" title="statement not covered" >          args.push('--depth', options.depth);</span>
         }
-<span class="cstat-no" title="statement not covered">        return spawn(git, args).fail(<span class="fstat-no" title="function not covered">function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return spawn(git, args).fail(<span class="fstat-no" title="function not covered" >function(err) {</span></span>
           // try again without banch options
-<span class="cstat-no" title="statement not covered">          return spawn(git, ['clone', repo, dir, '--origin', options.remote]);</span>
+<span class="cstat-no" title="statement not covered" >          return spawn(git, ['clone', repo, dir, '--origin', options.remote]);</span>
         });
       });
     }
@@ -814,8 +816,8 @@ exports.clone = <span class="fstat-no" title="function not covered">function clo
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-var clean = exports.clean = <span class="fstat-no" title="function not covered">function clean(cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['clean', '-f', '-d'], cwd);</span>
+var clean = exports.clean = <span class="fstat-no" title="function not covered" >function clean(cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['clean', '-f', '-d'], cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -826,8 +828,8 @@ var clean = exports.clean = <span class="fstat-no" title="function not covered">
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-var reset = exports.reset = <span class="fstat-no" title="function not covered">function reset(remote, branch, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['reset', '--hard', remote + '/' + branch], cwd);</span>
+var reset = exports.reset = <span class="fstat-no" title="function not covered" >function reset(remote, branch, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['reset', '--hard', remote + '/' + branch], cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -837,8 +839,8 @@ var reset = exports.reset = <span class="fstat-no" title="function not covered">
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-exports.fetch = <span class="fstat-no" title="function not covered">function fetch(remote, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['fetch', remote], cwd);</span>
+exports.fetch = <span class="fstat-no" title="function not covered" >function fetch(remote, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['fetch', remote], cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -849,25 +851,25 @@ exports.fetch = <span class="fstat-no" title="function not covered">function fet
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-exports.checkout = <span class="fstat-no" title="function not covered">function checkout(remote, branch, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  var treeish = remote + '/' + branch;</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['ls-remote', '--exit-code', '.', treeish], cwd)</span>
-      .then(<span class="fstat-no" title="function not covered">function() {</span>
+exports.checkout = <span class="fstat-no" title="function not covered" >function checkout(remote, branch, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  var treeish = remote + '/' + branch;</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['ls-remote', '--exit-code', '.', treeish], cwd)</span>
+      .then(<span class="fstat-no" title="function not covered" >function() {</span>
         // branch exists on remote, hard reset
-<span class="cstat-no" title="statement not covered">        return spawn(git, ['checkout', branch], cwd)</span>
-            .then(<span class="fstat-no" title="function not covered">function() {</span>
-<span class="cstat-no" title="statement not covered">              return clean(cwd);</span>
+<span class="cstat-no" title="statement not covered" >        return spawn(git, ['checkout', branch], cwd)</span>
+            .then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >              return clean(cwd);</span>
             })
-            .then(<span class="fstat-no" title="function not covered">function() {</span>
-<span class="cstat-no" title="statement not covered">              return reset(remote, branch, cwd);</span>
+            .then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >              return reset(remote, branch, cwd);</span>
             });
-      }, <span class="fstat-no" title="function not covered">function(error) {</span>
-<span class="cstat-no" title="statement not covered">        if (error instanceof ProcessError &amp;&amp; error.code === 2) {</span>
+      }, <span class="fstat-no" title="function not covered" >function(error) {</span>
+<span class="cstat-no" title="statement not covered" >        if (error instanceof ProcessError &amp;&amp; error.code === 2) {</span>
           // branch doesn't exist, create an orphan
-<span class="cstat-no" title="statement not covered">          return spawn(git, ['checkout', '--orphan', branch], cwd);</span>
+<span class="cstat-no" title="statement not covered" >          return spawn(git, ['checkout', '--orphan', branch], cwd);</span>
         } else {
           // unhandled error
-<span class="cstat-no" title="statement not covered">          return Q.reject(error);</span>
+<span class="cstat-no" title="statement not covered" >          return Q.reject(error);</span>
         }
       });
 };
@@ -879,8 +881,8 @@ exports.checkout = <span class="fstat-no" title="function not covered">function 
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-exports.rm = <span class="fstat-no" title="function not covered">function rm(files, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['rm', '--ignore-unmatch', '-r', '-f', files], cwd);</span>
+exports.rm = <span class="fstat-no" title="function not covered" >function rm(files, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['rm', '--ignore-unmatch', '-r', '-f', files], cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -890,8 +892,8 @@ exports.rm = <span class="fstat-no" title="function not covered">function rm(fil
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-exports.add = <span class="fstat-no" title="function not covered">function add(files, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['add', files], cwd);</span>
+exports.add = <span class="fstat-no" title="function not covered" >function add(files, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['add', files], cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -901,14 +903,14 @@ exports.add = <span class="fstat-no" title="function not covered">function add(f
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-exports.commit = <span class="fstat-no" title="function not covered">function commit(message, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['diff-index', '--quiet', 'HEAD', '.'], cwd)</span>
-      .then(<span class="fstat-no" title="function not covered">function() {</span>
+exports.commit = <span class="fstat-no" title="function not covered" >function commit(message, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['diff-index', '--quiet', 'HEAD', '.'], cwd)</span>
+      .then(<span class="fstat-no" title="function not covered" >function() {</span>
         // nothing to commit
-<span class="cstat-no" title="statement not covered">        return Q.resolve();</span>
+<span class="cstat-no" title="statement not covered" >        return Q.resolve();</span>
       })
-      .fail(<span class="fstat-no" title="function not covered">function() {</span>
-<span class="cstat-no" title="statement not covered">        return spawn(git, ['commit', '-m', message], cwd);</span>
+      .fail(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        return spawn(git, ['commit', '-m', message], cwd);</span>
       });
 };
 &nbsp;
@@ -919,8 +921,8 @@ exports.commit = <span class="fstat-no" title="function not covered">function co
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-exports.tag = <span class="fstat-no" title="function not covered">function tag(name, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['tag', name], cwd);</span>
+exports.tag = <span class="fstat-no" title="function not covered" >function tag(name, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['tag', name], cwd);</span>
 };
 &nbsp;
 &nbsp;
@@ -931,16 +933,15 @@ exports.tag = <span class="fstat-no" title="function not covered">function tag(n
  * @param {string} cwd Repository directory.
  * @return {Promise} A promise.
  */
-exports.push = <span class="fstat-no" title="function not covered">function push(remote, branch, cwd) {</span>
-<span class="cstat-no" title="statement not covered">  return spawn(git, ['push', '--tags', remote, branch], cwd);</span>
+exports.push = <span class="fstat-no" title="function not covered" >function push(remote, branch, cwd) {</span>
+<span class="cstat-no" title="statement not covered" >  return spawn(git, ['push', '--tags', remote, branch], cwd);</span>
 };
 &nbsp;
 &nbsp;</pre></td></tr>
-</tbody></table></pre>
+</table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 12:06:28 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 15:21:36 GMT+0000 (UTC)</div>
 </div>
-
-
-</body></html>
+</body>
+</html>
