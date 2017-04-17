@@ -1,7 +1,7 @@
 # test coverage for  [gh-pages (v0.12.0)](https://github.com/tschaub/gh-pages)  [![npm package](https://img.shields.io/npm/v/npmtest-gh-pages.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-gh-pages) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-gh-pages.svg)](https://travis-ci.org/npmtest/node-npmtest-gh-pages)
 #### Publish to a gh-pages branch on GitHub (or any other branch on any other remote)
 
-[![NPM](https://nodei.co/npm/gh-pages.png?downloads=true)](https://www.npmjs.com/package/gh-pages)
+[![NPM](https://nodei.co/npm/gh-pages.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gh-pages)
 
 | git-branch : | [alpha](https://github.com/npmtest/node-npmtest-gh-pages/tree/alpha)|
 |--:|:--|
@@ -9,11 +9,17 @@
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-gh-pages/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-gh-pages/build/test-report.html)|
 | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-gh-pages/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-gh-pages/tree/gh-pages/build)|
 
-[![istanbul-coverage](https://npmtest.github.io/node-npmtest-gh-pages/build/screenCapture.buildCustomOrg.browser.coverage.html.png)](https://npmtest.github.io/node-npmtest-gh-pages/build/coverage.html/index.html)
+- [https://npmtest.github.io/node-npmtest-gh-pages/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-gh-pages/build/coverage.html/index.html)
 
-[![test-report](https://npmtest.github.io/node-npmtest-gh-pages/build/screenCapture.buildCustomOrg.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmtest%252Fnode-npmtest-gh-pages%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-gh-pages/build/test-report.html)
+[![istanbul-coverage](https://npmtest.github.io/node-npmtest-gh-pages/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://npmtest.github.io/node-npmtest-gh-pages/build/coverage.html/index.html)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-gh-pages/build/screenCapture.buildApidoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-gh-pages%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gh-pages/build/apidoc.html)
+- [https://npmtest.github.io/node-npmtest-gh-pages/build/test-report.html](https://npmtest.github.io/node-npmtest-gh-pages/build/test-report.html)
+
+[![test-report](https://npmtest.github.io/node-npmtest-gh-pages/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-gh-pages/build/test-report.html)
+
+- [https://npmdoc.github.io/node-npmdoc-gh-pages/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-gh-pages/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-gh-pages/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gh-pages/build/apidoc.html)
 
 ![npmPackageListing](https://npmtest.github.io/node-npmtest-gh-pages/build/screenCapture.npmPackageListing.svg)
 
@@ -71,17 +77,14 @@
     "main": "lib/index.js",
     "maintainers": [
         {
-            "name": "tschaub",
-            "email": "tim.schaub@gmail.com"
+            "name": "tschaub"
         },
         {
-            "name": "markdalgleish",
-            "email": "mark.john.dalgleish@gmail.com"
+            "name": "markdalgleish"
         }
     ],
     "name": "gh-pages",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/tschaub/gh-pages.git"
