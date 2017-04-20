@@ -1,4 +1,7 @@
-# test coverage for  [gh-pages (v0.12.0)](https://github.com/tschaub/gh-pages)  [![npm package](https://img.shields.io/npm/v/npmtest-gh-pages.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-gh-pages) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-gh-pages.svg)](https://travis-ci.org/npmtest/node-npmtest-gh-pages)
+# npmtest-gh-pages
+
+#### basic test coverage for  [gh-pages (v0.12.0)](https://github.com/tschaub/gh-pages)  [![npm package](https://img.shields.io/npm/v/npmtest-gh-pages.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-gh-pages) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-gh-pages.svg)](https://travis-ci.org/npmtest/node-npmtest-gh-pages)
+
 #### Publish to a gh-pages branch on GitHub (or any other branch on any other remote)
 
 [![NPM](https://nodei.co/npm/gh-pages.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gh-pages)
